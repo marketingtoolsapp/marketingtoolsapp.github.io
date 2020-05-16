@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fastspring Payout</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700%7CMaterial+Icons" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/static/spin.css" />
+    <script
+            id="fsc-api"
+            src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.7.6/fastspring-builder.min.js"
+            type="text/javascript"
+            data-storefront="socialsoftware.test.onfastspring.com/popup-marketing-assistant"
+            data-popup-closed="onPopupClose"
+            data-access-key="2FPJXYHFQJCJSCZD1JGYGG">
+    </script>
+</head>
+<body>
+<div id="app">
+    <script type="text/javascript">
+      function showPopup() {
+        console.log("aaa", JSInterface.getSecurePayloadProduct(), JSInterface.getSecureKeyProduct(), JSInterface.getSecurePayloadAccount(), JSInterface.getSecureKeyAccount());
+        JSInterface.loading(true);
+​
+        fastspring.builder.reset();
+        fastspring.builder.secure(JSInterface.getSecurePayloadProduct(), JSInterface.getSecureKeyProduct(), function (data) {
+          JSInterface.loading(false);
+          if(JSInterface.getSecurePayloadAccount() !== ''){
+            fastspring.builder.secure(JSInterface.getSecurePayloadAccount(), JSInterface.getSecureKeyAccount());
+          }else if(JSInterface.getEmail() !== ''){
+            fastspring.builder.recognize({ 'email': JSInterface.getEmail() });
+          }
+          fastspring.builder.checkout();
+        });
+      }
+      function onPopupClose(data) {
+        JSInterface.onPopupClose(data !== null);
+      }
+    </script>
+</div>
+</body>
+</html>
