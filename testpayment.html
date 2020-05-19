@@ -19,6 +19,7 @@
     <script type="text/javascript">
       function showPopup() {
         JSInterface.loading(true);
+          console.log({ 'email': JSInterface.getEmail(), 'firstName': JSInterface.getFirstname(), 'lastName': JSInterface.getLastname() });
 
         fastspring.builder.reset();
         fastspring.builder.secure(JSInterface.getSecurePayloadProduct(), JSInterface.getSecureKeyProduct(), function (data) {
@@ -26,6 +27,7 @@
           if(JSInterface.getSecurePayloadAccount() !== ''){
             fastspring.builder.secure(JSInterface.getSecurePayloadAccount(), JSInterface.getSecureKeyAccount());
           }else if(JSInterface.getEmail() !== ''){
+              console.log('aa');
             fastspring.builder.recognize({ 'email': JSInterface.getEmail(), 'firstName': JSInterface.getFirstname(), 'lastName': JSInterface.getLastname() });
           }
           fastspring.builder.checkout();
