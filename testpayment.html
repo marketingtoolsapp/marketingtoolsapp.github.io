@@ -19,7 +19,6 @@
     <script type="text/javascript">
       function showPopup() {
         JSInterface.loading(true);
-          console.log({ 'email': JSInterface.getEmail(), 'firstName': JSInterface.getFirstname(), 'lastName': JSInterface.getLastname() });
 
         fastspring.builder.reset();
         fastspring.builder.secure(JSInterface.getSecurePayloadProduct(), JSInterface.getSecureKeyProduct(), function (data) {
