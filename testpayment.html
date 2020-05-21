@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700%7CMaterial+Icons" rel="stylesheet" />
     <script
             id="fsc-api"
-            src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.7.6/fastspring-builder.min.js"
+            src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.3/fastspring-builder.min.js"
             type="text/javascript"
             data-storefront="socialsoftware.test.onfastspring.com/popup-marketing-assistant"
             data-popup-closed="onPopupClose"
@@ -25,8 +25,7 @@
           JSInterface.loading(false);
           if(JSInterface.getSecurePayloadAccount() !== ''){
             fastspring.builder.secure(JSInterface.getSecurePayloadAccount(), JSInterface.getSecureKeyAccount());
-          }else if(JSInterface.getEmail() !== ''){
-              console.log('aa');
+          }else if(JSInterface.getEmail() !== ''){        
             fastspring.builder.recognize({ 'email': JSInterface.getEmail(), 'firstName': JSInterface.getFirstname(), 'lastName': JSInterface.getLastname() });
           }
           fastspring.builder.checkout();
