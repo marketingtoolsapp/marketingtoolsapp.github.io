@@ -16,6 +16,16 @@
 </head>
 <body>
 <div id="app">
+    <div id="successdiv" style="display: none">Successfull, check application</div>
+
+    <script>
+      (function() {
+        if (location.search.includes('?')) 
+            document.getElementById("successdiv").style.display = "block";
+          else
+            document.getElementById("successdiv").style.display = "none";  
+      })();
+    </script>
     <script type="text/javascript">
       function showPopup() {
         JSInterface.loading(true);
